@@ -50,10 +50,13 @@ export default function renderWorkout() {
             <div class="exercise-info">
               <div class="exercise-name">${ex.name}</div>
               <div class="exercise-meta">${ex.muscle} • ${ex.equipment}</div>
-              <div class="exercise-prescription">
+              <div class="exercise-prescription" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
                 <span class="badge badge-blue">${ex.defaultSets} sets</span>
                 <span class="badge badge-green">${ex.defaultReps} reps</span>
                 <span class="badge badge-purple">${ex.restSeconds}s rest</span>
+                <a href="https://gymvisual.com/search?q=${encodeURIComponent(ex.name)}" target="_blank" class="badge badge-orange" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:600; cursor:pointer; font-size:0.7rem; text-transform:uppercase;">
+                  👁️ GymVisual
+                </a>
               </div>
             </div>
           </div>

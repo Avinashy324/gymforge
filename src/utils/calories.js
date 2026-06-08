@@ -34,17 +34,60 @@ export function getCalorieTarget(tdee, goal) {
   }
 }
 
-export function getMacroSplit(calories, goal) {
-  let proteinPct, carbPct, fatPct;
+export function getMacroSplit(calories, goal, weightKg = 70) {
+  let proteinGrams;
   switch (goal) {
-    case 'muscle-gain': proteinPct = 0.30; carbPct = 0.45; fatPct = 0.25; break;
-    case 'fat-loss': proteinPct = 0.35; carbPct = 0.35; fatPct = 0.30; break;
-    case 'endurance': proteinPct = 0.25; carbPct = 0.50; fatPct = 0.25; break;
-    default: proteinPct = 0.30; carbPct = 0.40; fatPct = 0.30;
+    case 'muscle-gain':
+      proteinGrams = Math.round(weightKg * 2.0);
+      break;
+    case 'fat-loss':
+      proteinGrams = Math.round(weightKg * 1.6);
+      break;
+    case 'endurance':
+      proteinGrams = Math.round(weightKg * 1.4);
+      break;
+    default:
+      proteinGrams = Math.round(weightKg * 1.2);
   }
+
+  // Ensure protein does not exceed 45% of total calories (safety boundary)
+  const maxProteinGrams = Math.round((calories * 0.45) / 4);
+  if (proteinGrams > maxProteinGrams) {
+    proteinGrams = maxProteinGrams;
+  }
+  // Ensure protein is at least 15% of total calories
+  const minProteinGrams = Math.round((calories * 0.15) / 4);
+  if (proteinGrams < minProteinGrams) {
+    proteinGrams = minProteinGrams;
+  }
+
+  const proteinCalories = proteinGrams * 4;
+  const remainingCalories = calories - proteinCalories;
+
+  let fatPct;
+  switch (goal) {
+    case 'muscle-gain':
+      fatPct = 0.25;
+      break;
+    case 'fat-loss':
+      fatPct = 0.28;
+      break;
+    case 'endurance':
+      fatPct = 0.22;
+      break;
+    default:
+      fatPct = 0.25;
+  }
+
+  const fatCalories = calories * fatPct;
+  const fatGrams = Math.round(fatCalories / 9);
+  
+  const carbCalories = remainingCalories - (fatGrams * 9);
+  const carbGrams = Math.max(0, Math.round(carbCalories / 4));
+
   return {
-    protein: Math.round((calories * proteinPct) / 4),
-    carbs: Math.round((calories * carbPct) / 4),
-    fat: Math.round((calories * fatPct) / 9),
+    protein: proteinGrams,
+    carbs: carbGrams,
+    fat: fatGrams
   };
 }

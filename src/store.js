@@ -14,6 +14,7 @@ const defaultState = {
     dietPreference: 'non-veg', // 'veg' | 'non-veg'
   },
   workoutLogs: {},      // { '2024-01-15': { exercises: { 'bench-press': [{ weight: 60, reps: 10, done: true }, ...] } } }
+  foodLogs: {},         // { '2024-01-15': [{ id: 'paneer', name: 'Paneer', weight: 150, calories: 390, protein: 27, carbs: 6, fat: 30, fiber: 0, vitamins: {...}, minerals: {...} }, ...] }
   streak: 0,
   lastWorkoutDate: null,
   selectedPlanDay: 0,
@@ -92,6 +93,36 @@ export const store = {
   getLog(date) {
     if (!this._state) this.init();
     return this._state.workoutLogs[date] || { exercises: {} };
+  },
+
+  logFood(date, foodData) {
+    if (!this._state) this.init();
+    if (!this._state.foodLogs) {
+      this._state.foodLogs = {};
+    }
+    if (!this._state.foodLogs[date]) {
+      this._state.foodLogs[date] = [];
+    }
+    this._state.foodLogs[date].push(foodData);
+    this._save();
+    this._notify();
+  },
+
+  removeFood(date, index) {
+    if (!this._state) this.init();
+    if (this._state.foodLogs?.[date]) {
+      this._state.foodLogs[date].splice(index, 1);
+      this._save();
+      this._notify();
+    }
+  },
+
+  getFoodLog(date) {
+    if (!this._state) this.init();
+    if (!this._state.foodLogs) {
+      this._state.foodLogs = {};
+    }
+    return this._state.foodLogs[date] || [];
   },
 
   updateStreak() {
