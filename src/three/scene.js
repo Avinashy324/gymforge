@@ -57,11 +57,11 @@ export class SceneManager {
 
   _addGeometricShapes() {
     const shapeConfigs = [
-      { geometry: new THREE.IcosahedronGeometry(0.5, 0), color: 0xFF6B2C, position: [-4, 3, -3] },
-      { geometry: new THREE.OctahedronGeometry(0.4, 0), color: 0xA855F7, position: [5, -2, -4] },
-      { geometry: new THREE.TorusGeometry(0.4, 0.15, 8, 20), color: 0x3B82F6, position: [-3, -3, -2] },
-      { geometry: new THREE.TetrahedronGeometry(0.35, 0), color: 0x22C55E, position: [4, 2, -5] },
-      { geometry: new THREE.DodecahedronGeometry(0.3, 0), color: 0xFF6B2C, position: [0, 4, -3] },
+      { geometry: new THREE.IcosahedronGeometry(0.5, 0), color: 0xcccccc, position: [-4, 3, -3] },
+      { geometry: new THREE.OctahedronGeometry(0.4, 0), color: 0xcccccc, position: [5, -2, -4] },
+      { geometry: new THREE.TorusGeometry(0.4, 0.15, 8, 20), color: 0xcccccc, position: [-3, -3, -2] },
+      { geometry: new THREE.TetrahedronGeometry(0.35, 0), color: 0xcccccc, position: [4, 2, -5] },
+      { geometry: new THREE.DodecahedronGeometry(0.3, 0), color: 0xcccccc, position: [0, 4, -3] },
     ];
 
     shapeConfigs.forEach(config => {
@@ -69,7 +69,7 @@ export class SceneManager {
         color: config.color,
         wireframe: true,
         transparent: true,
-        opacity: 0.15,
+        opacity: 0.04,
       });
       const mesh = new THREE.Mesh(config.geometry, material);
       mesh.position.set(...config.position);

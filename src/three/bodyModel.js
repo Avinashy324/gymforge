@@ -12,7 +12,7 @@ export class BodyModel {
       color: type === 'ectomorph' ? 0x3B82F6 : type === 'mesomorph' ? 0xFF6B2C : 0xA855F7,
       wireframe: true,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.35,
     });
 
     // Head

@@ -14,10 +14,10 @@ export class ParticleSystem {
     const colors = new Float32Array(this.count * 3);
     const sizes = new Float32Array(this.count);
 
-    const orangeColor = new THREE.Color(0xFF6B2C);
-    const purpleColor = new THREE.Color(0xA855F7);
-    const blueColor = new THREE.Color(0x3B82F6);
-    const colorOptions = [orangeColor, purpleColor, blueColor];
+    const color1 = new THREE.Color(0xbbbbbb);
+    const color2 = new THREE.Color(0xcccccc);
+    const color3 = new THREE.Color(0xdddddd);
+    const colorOptions = [color1, color2, color3];
 
     for (let i = 0; i < this.count; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 20;
@@ -29,7 +29,7 @@ export class ParticleSystem {
       colors[i * 3 + 1] = color.g;
       colors[i * 3 + 2] = color.b;
 
-      sizes[i] = Math.random() * 3 + 1;
+      sizes[i] = Math.random() * 2 + 0.5;
     }
 
     this.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -37,11 +37,11 @@ export class ParticleSystem {
     this.geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
     this.material = new THREE.PointsMaterial({
-      size: 0.05,
+      size: 0.04,
       vertexColors: true,
       transparent: true,
-      opacity: 0.6,
-      blending: THREE.AdditiveBlending,
+      opacity: 0.35,
+      blending: THREE.NormalBlending,
       depthWrite: false,
       sizeAttenuation: true,
     });

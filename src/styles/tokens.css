@@ -3,34 +3,34 @@
    ============================================ */
 
 :root {
-  /* ── Backgrounds ── */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-tertiary: #1a1a2e;
-  --bg-glass: rgba(255, 255, 255, 0.03);
-  --bg-glass-hover: rgba(255, 255, 255, 0.06);
+  /* ── Backgrounds (Clean White Mode) ── */
+  --bg-primary: #f6f8fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #edf0f2;
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-hover: rgba(255, 255, 255, 0.9);
 
   /* ── Accent Colors ── */
-  --accent-orange: #FF6B2C;
-  --accent-orange-dim: rgba(255, 107, 44, 0.15);
-  --accent-green: #22C55E;
-  --accent-green-dim: rgba(34, 197, 94, 0.15);
-  --accent-blue: #3B82F6;
-  --accent-purple: #A855F7;
-  --accent-red: #EF4444;
+  --accent-orange: #ff5e2b;
+  --accent-orange-dim: rgba(255, 94, 43, 0.08);
+  --accent-green: #10b981;
+  --accent-green-dim: rgba(16, 185, 129, 0.08);
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-red: #ef4444;
 
-  /* ── Text ── */
-  --text-primary: #F5F5F5;
-  --text-secondary: #9CA3AF;
-  --text-tertiary: #6B7280;
+  /* ── Text (Premium Charcoal & Grays) ── */
+  --text-primary: #121316;
+  --text-secondary: #565d6d;
+  --text-tertiary: #9098a9;
 
   /* ── Borders ── */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-accent: rgba(255, 107, 44, 0.3);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-accent: rgba(255, 94, 43, 0.2);
 
-  /* ── Glow / Shadows ── */
-  --glow-orange: 0 0 40px rgba(255, 107, 44, 0.2);
-  --glow-green: 0 0 40px rgba(34, 197, 94, 0.2);
+  /* ── Glow / Shadows (Subtle, elegant shadows, no tech-neon glows) ── */
+  --glow-orange: 0 4px 20px rgba(255, 94, 43, 0.08);
+  --glow-green: 0 4px 20px rgba(16, 185, 129, 0.08);
 
   /* ── Spacing Scale ── */
   --space-xs: 4px;
@@ -76,15 +76,15 @@
   --z-modal: 200;
   --z-toast: 300;
 
-  /* ── Glass / Frosted Effects ── */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-bg-heavy: rgba(255, 255, 255, 0.08);
-  --glass-bg-light: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-border-light: rgba(255, 255, 255, 0.06);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --glass-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
-  --glass-blur: blur(40px) saturate(180%);
-  --glass-blur-heavy: blur(60px) saturate(200%);
-  --glass-blur-light: blur(20px) saturate(150%);
+  /* ── Glass / Frosted Effects (iOS Light mode blurs & shadows) ── */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-bg-heavy: rgba(255, 255, 255, 0.95);
+  --glass-bg-light: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-light: rgba(0, 0, 0, 0.04);
+  --glass-shadow: 0 8px 30px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --glass-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.02);
+  --glass-blur: blur(24px) saturate(190%);
+  --glass-blur-heavy: blur(36px) saturate(200%);
+  --glass-blur-light: blur(16px) saturate(180%);
 }
